@@ -4,15 +4,56 @@
     {
         static void Main(string[] args)
         {
-            List<IDescribable> items = new List<IDescribable>();
+
+
+
+
+
+
+
+
+            Account a = new Account("Anna", 1000);
+            try
+            {
+                a.Withdraw(2000);
+            }
+
+            catch (InsufficientFundsException e)
+            {
+                Console.WriteLine($"You attempted to withdraw {e.RequestedAmount:C2} but only have {a.Balance:C2} available");
+                Console.WriteLine(e.GetType());
+                Console.WriteLine(e.StackTrace);
+                Console.WriteLine(e.Message);
+
+
+            }
+            catch (InvalidOperationException e)
+            {
+                Console.WriteLine("Specifikt: " + e.Message);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
+
+
+
+
+
+
+
+            /*List<IDescribable> items = new List<IDescribable>();
             items.Add(new Car("Tesla", 250, 4));
             items.Add(new Motorcycle("Yamaha", 280));
-            
+
 
             foreach (IDescribable item in items)
             {
                 Console.WriteLine(item.Describe());
-            }
+            }*/
+
+
 
             /*Dictionary<string, List<Book>> booksByAuthor = new Dictionary<string, List<Book>>
             {
