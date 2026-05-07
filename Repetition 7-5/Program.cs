@@ -1,26 +1,60 @@
 ﻿namespace Repetition_7_5
 {
-    internal class Program
+    public class Program
     {
         static void Main(string[] args)
         {
-            int a = 13;
-            int b = 4;
-            double c = 13;
 
-            Console.WriteLine(a / b);
-            Console.WriteLine(c / b);
-            Console.WriteLine(a % b);
 
-            string text = "C#";
-            int year = 2026;
+            Dictionary<string, List<Book>> booksByAuthor = new Dictionary<string, List<Book>>
+            {
+                {
+                    "J.R.R. Tolkien",
+                    new List<Book>
+                    {
+                        new Book("The Hobbit", "J.R.R. Tolkien", 1937),
+                        new Book("The Fellowship of the Ring", "J.R.R. Tolkien", 1954)
+                    }
+                },
+                {
+                    "H.P. Lovecraft",
+                    new List<Book>
+                    {
+                        new Book("The Call of Cthulhu", "H.P. Lovecraft", 1928),
+                        new Book("At the Mountains of Madness", "H.P. Lovecraft", 1936)
+                    }
+                }
+            };
 
-            Console.WriteLine($"Vi lærer {text} i {year}!");
+            foreach (var entry in booksByAuthor)
+            {
+                Console.WriteLine($"Author: {entry.Key} ({entry.Value.Count} books)");
+            }
+        }
 
-            bool isReady = a > 10 && b < 5;
-            bool isMaybe = a < 10 || b == 4;
 
-            Console.WriteLine($"{isReady}, {isMaybe}");
+        static int CountPositive(int[] numbers)
+        {
+            int count = 0;
+
+            foreach (int n in numbers)
+            {
+                if (n > 0)
+                    count = count + 1;
+            }
+
+            return count;
+        }
+
+        static string BuildSummary(List<double> prices)
+        {
+            double totalPrice = 0;
+            foreach (double price in prices)
+            {
+                totalPrice += price;
+            }
+
+            return $"{prices.Count} prices, Total: {totalPrice}, Average: {totalPrice / prices.Count:F2}";
         }
     }
 }
