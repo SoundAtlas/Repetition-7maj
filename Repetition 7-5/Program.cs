@@ -4,9 +4,17 @@
     {
         static void Main(string[] args)
         {
+            List<IDescribable> items = new List<IDescribable>();
+            items.Add(new Car("Tesla", 250, 4));
+            items.Add(new Motorcycle("Yamaha", 280));
+            
 
+            foreach (IDescribable item in items)
+            {
+                Console.WriteLine(item.Describe());
+            }
 
-            Dictionary<string, List<Book>> booksByAuthor = new Dictionary<string, List<Book>>
+            /*Dictionary<string, List<Book>> booksByAuthor = new Dictionary<string, List<Book>>
             {
                 {
                     "J.R.R. Tolkien",
@@ -26,10 +34,10 @@
                 }
             };
 
-            foreach (var entry in booksByAuthor)
+            foreach (KeyValuePair<string, List<Book>> entry in booksByAuthor)
             {
                 Console.WriteLine($"Author: {entry.Key} ({entry.Value.Count} books)");
-            }
+            }*/
         }
 
 
